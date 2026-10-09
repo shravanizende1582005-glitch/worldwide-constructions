@@ -459,6 +459,51 @@ function MobileIntro() {
   );
 }
 
+function HomeLanding() {
+  const [isMobile, setIsMobile] = useState(
+    () => window.matchMedia?.("(max-width: 760px)").matches ?? false
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia?.("(max-width: 760px)");
+
+    if (!mediaQuery) {
+      return undefined;
+    }
+
+    const updateViewport = (event) => setIsMobile(event.matches);
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", updateViewport);
+      return () => mediaQuery.removeEventListener("change", updateViewport);
+    }
+
+    mediaQuery.addListener(updateViewport);
+    return () => mediaQuery.removeListener(updateViewport);
+  }, []);
+
+  if (!isMobile) {
+    return <Home />;
+  }
+
+  return (
+    <div className="mobile-journey">
+      <section className="mobile-journey-page" aria-label="Home">
+        <Home />
+      </section>
+      <section className="mobile-journey-page" aria-label="Services">
+        <Services />
+      </section>
+      <section className="mobile-journey-page" aria-label="Contact">
+        <Contact />
+      </section>
+      <section className="mobile-journey-page" aria-label="Feedback">
+        <Feedback />
+      </section>
+    </div>
+  );
+}
+
 // ======================================
 // MAIN APP
 // ======================================
@@ -480,7 +525,7 @@ function App() {
 
             <Route
               path="/"
-              element={<Home />}
+              element={<HomeLanding />}
             />
 
             {/* SERVICES */}

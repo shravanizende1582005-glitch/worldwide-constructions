@@ -1924,6 +1924,8 @@
 .login-panel-footer a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 @media (max-width: 760px) {
+  html { scroll-snap-type: y proximity; }
+  .mobile-journey-page { scroll-snap-align: start; }
   .menu-toggle { display: block; position: relative; z-index: 2; }
   .main-nav {
     position: absolute;
