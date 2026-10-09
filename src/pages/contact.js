@@ -21,7 +21,7 @@ function Contact() {
     };
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/contacts", {
+      const response = await fetch("https://worldwide-constructions.vercel.app/api/contacts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

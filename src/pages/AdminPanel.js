@@ -21,13 +21,17 @@ function AdminPanel() {
   useEffect(() => {
     const loadAdminData = async () => {
       try {
-        const [statsResponse, usersResponse, contactsResponse, feedbackResponse] =
-          await Promise.all([
-            fetch("http://127.0.0.1:5000/api/admin/stats"),
-            fetch("http://127.0.0.1:5000/api/admin/users"),
-            fetch("http://127.0.0.1:5000/api/admin/contacts"),
-            fetch("http://127.0.0.1:5000/api/admin/feedback"),
-          ]);
+        const [
+  statsResponse,
+  usersResponse,
+  contactsResponse,
+  feedbackResponse,
+] = await Promise.all([
+  fetch("https://worldwide-constructions.vercel.app/api/admin/stats"),
+  fetch("https://worldwide-constructions.vercel.app/api/admin/users"),
+  fetch("https://worldwide-constructions.vercel.app/api/admin/contacts"),
+  fetch("https://worldwide-constructions.vercel.app/api/admin/feedback"),
+]);
 
         const statsData = await statsResponse.json();
         const usersData = await usersResponse.json();
